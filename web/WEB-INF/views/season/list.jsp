@@ -36,10 +36,11 @@
                 </c:forEach>
             </table>
         </div>
-        <div id="page_container">
-            <nav>
-                <ul class="pagination justify-content-center"></ul>
-            </nav>
+        <div class="pageContainer">
+            <c:set var="selectedPage" value="${param.page == null ? 1 : param.page}" />
+            <c:forEach var="page" begin="1" end="${maxPageNum}">
+                <div><a href="/board/list?page=${page}&searchType=${param.searchType}&searchText=${param.searchText}&rowCnt=${param.rowCnt}"><span class="${selectedPage == page ? 'selected' : ''}"><c:out value="${page}"/></span></a></div>
+            </c:forEach>
         </div>
     </div>
 </form>

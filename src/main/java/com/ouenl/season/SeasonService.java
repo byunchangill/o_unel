@@ -1,5 +1,6 @@
 package com.ouenl.season;
 
+import com.ouenl.model.ResultVo;
 import com.ouenl.model.season.SeasonDto;
 import com.ouenl.model.season.SeasonEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,15 @@ public class SeasonService {
     private SeasonMapper mapper;
 
     public List<SeasonEntity> selSeasonList(SeasonDto dto) {
+        int startIdx = (dto.getCurrentPage() - 1) * dto.getRecordCount();
+        if(startIdx < 0) {
+            startIdx = 0;
+        }
+        dto.setStartIdx(startIdx);
         return mapper.selSeasonList(dto);
+    }
+
+    public ResultVo selMaxPageVal(SeasonDto dto) {
+        return mapper.selMaxPageVal(dto);
     }
 }
