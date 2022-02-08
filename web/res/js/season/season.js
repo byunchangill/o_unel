@@ -15,6 +15,7 @@
 
     const seasonLiElem = document.querySelectorAll('#season-tab li');
     const seasonListTableElem = document.querySelector('#seasonListTable');
+    const pageCountElem = seasonListTableElem.querySelector("#pageCount");
 
     seasonLiElem.forEach(item => {
         item.addEventListener('click', () => {

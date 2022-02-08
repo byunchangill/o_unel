@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/res/css/season/list.css">
 </head>
 <body>
-<form action="/season/list" method="get">
     <div class="container">
         <div>
             <ul id="season-tab" class="tabs">
@@ -36,15 +35,20 @@
                 </c:forEach>
             </table>
         </div>
-        <div class="pageContainer">
-            <c:set var="selectedPage" value="${param.page == null ? 1 : param.page}" />
-            <c:forEach var="page" begin="1" end="${maxPageNum}">
-                <div><a href="/board/list?page=${page}&searchType=${param.searchType}&searchText=${param.searchText}&rowCnt=${param.rowCnt}"><span class="${selectedPage == page ? 'selected' : ''}"><c:out value="${page}"/></span></a></div>
+
+        <div id="pageCount">
+            <c:forEach begin="1" end="${requestScope.maxPageVal}" var="page">
+                <c:choose>
+                    <c:when test="${param.page}">
+                        <span class="selected">${page}</span>
+                    </c:when>
+                    <c:otherwise>
+                        <span><a href="list?page=${page}&recordCnt=${param.recordCnt == null ? 10 : param.recordCnt}">${page}</a></span>
+                    </c:otherwise>
+                </c:choose>
             </c:forEach>
         </div>
     </div>
-</form>
-
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/res/js/season/season.js"></script>
 <script src="/res/js/index.js"></script>

@@ -4,12 +4,12 @@
     <select id="selSeasonList" resultType="SeasonEntity">
         SELECT ifood, f_nm
         FROM o_food
-        WHERE f_season = #{f_season};
+        WHERE f_season = #{f_season}
+        LIMIT #{startIdx}, #{recordCnt}
     </select>
 
-    <select id="selMaxPageVal" resultType="ResultVo">
-        SELECT CEIL(COUNT(ifood) / ${recordCount}) AS result
+    <select id="selMaxPageVal" resultType="_int">
+        SELECT CEIL(COUNT(ifood) / #{recordCnt})
         FROM o_food
-        WHERE f_season = ${f_season}
     </select>
 </mapper>
