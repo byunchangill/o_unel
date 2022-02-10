@@ -5,11 +5,11 @@
         SELECT ifood, f_nm
         FROM o_food
         WHERE f_season = #{f_season}
-        LIMIT #{startIdx}, #{recordCnt}
+        LIMIT #{startIdx}, #{recordCount}
     </select>
 
-    <select id="selMaxPageVal" resultType="_int">
-        SELECT CEIL(COUNT(ifood) / #{recordCnt})
+    <select id="selMaxPageVal" resultType="ResultVo">
+        SELECT CEIL(COUNT(ifood) / #{recordCount}) AS result
         FROM o_food
     </select>
 </mapper>

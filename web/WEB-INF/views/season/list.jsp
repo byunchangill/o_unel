@@ -36,22 +36,15 @@
             </table>
         </div>
 
-        <div id="pageCount">
-            <c:forEach begin="1" end="${requestScope.maxPageVal}" var="page">
-                <c:choose>
-                    <c:when test="${param.page}">
-                        <span class="selected">${page}</span>
-                    </c:when>
-                    <c:otherwise>
-                        <span><a href="list?page=${page}&recordCnt=${param.recordCnt == null ? 10 : param.recordCnt}">${page}</a></span>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
+        <div id="page_container">
+            <nav class="page">
+                <ul class="pagination justify-content-center"></ul>
+            </nav>
         </div>
     </div>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="/res/js/season/season.js"></script>
-<script src="/res/js/index.js"></script>
+    <script src="/res/js/index.js"></script>
+    <script src="/res/js/season/season.js"></script>
 </body>
 </html>
 

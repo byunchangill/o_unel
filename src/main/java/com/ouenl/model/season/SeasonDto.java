@@ -8,7 +8,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class SeasonDto extends SeasonEntity {
-    private int page = 1;
+    private int  ifood;
+    private int page;
+    private int currentPage;
+    private int recordCount;
     private int startIdx;
-    private int recordCnt = 10;
 }
